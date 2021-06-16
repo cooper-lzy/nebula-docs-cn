@@ -9,7 +9,7 @@
 <meta content="Nebula Graph" name="author"/>
 <link href="https://docs.nebula-graph.com.cn/master/master/5.configurations-and-logs/1.configurations/4.storage-config/" rel="canonical"/>
 <link href="../../../assets/images/favicon.ico" rel="icon"/>
-<meta content="mkdocs-1.1.2, mkdocs-material-7.1.7" name="generator"/>
+<meta content="mkdocs-1.1.2, mkdocs-material-7.1.8" name="generator"/>
 <title>Storage服务配置 - Nebula Graph Database 手册</title>
 <link href="../../../assets/stylesheets/main.ca7ac06f.min.css" rel="stylesheet"/>
 <link href="../../../assets/stylesheets/palette.f1a3b89f.min.css" rel="stylesheet"/>
@@ -650,6 +650,11 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../../3.ngql-guide/7.general-query-statements/6.show/16.show-users/">
         SHOW USERS
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../3.ngql-guide/7.general-query-statements/6.show/17.show-sessions/">
+        SHOW SESSIONS
       </a>
 </li>
 </ul>
@@ -2160,6 +2165,11 @@
 <td align="left"><code>12</code></td>
 <td align="left">每个key的prefix长度。可选值为<code>12</code>（分片ID+点ID）和<code>16</code>（分片ID+点ID+标签ID/边类型ID）。单位：字节。</td>
 </tr>
+<tr>
+<td align="left"><code>enable_partitioned_index_filter</code></td>
+<td align="left">-</td>
+<td align="left">设置为<code>true</code>可以降低bloom过滤器占用的内存大小，但是在某些随机寻道（random-seek）的情况下，可能会降低读取性能。</td>
+</tr>
 </tbody>
 </table>
 <h2 id="rocksdb_options">rocksdb options配置<a class="headerlink" href="#rocksdb_options" title="Permanent link">¶</a></h2>
@@ -2231,9 +2241,22 @@ disable_auto_compactions
 </ul>
 <h2 id="_3">超级节点处理（出入边数量极多的点）<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
 <p>在每个点出发的查询获取到边时，直接截断。目的是避免超级节点的邻边过多，单个查询占用过多的硬盘和内存。截取前 <code>max_edge_returned_per_vertex</code> 个边，多余的边不返回。该参数作用于全局，不用于单个space。</p>
-<p>属性名                   | 默认值                    | 说明  |
--------------------------| ------------------------ | ----------- | --- |
-max_edge_returned_per_vertex | 2147483647 | 每个稠密点，最多返回多少条边，多余的边截断不返回。配置文件默认未设置。 |</p>
+<table>
+<thead>
+<tr>
+<th align="left">属性名</th>
+<th align="left">默认值</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">max_edge_returned_per_vertex</td>
+<td align="left">2147483647</td>
+<td align="left">每个稠密点，最多返回多少条边，多余的边截断不返回。配置文件默认未设置。</td>
+</tr>
+</tbody>
+</table>
 <div class="admonition compatibility">
 <p class="admonition-title">Compatibility</p>
 <p>Nebula Graph 1.x 中的蓄水池采样方法在 Nebula Graph master 不再支持。</p>
@@ -2244,7 +2267,7 @@ max_edge_returned_per_vertex | 2147483647 | 每个稠密点，最多返回多少
 <div class="md-source-date">
 <small>
     
-      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年6月8日</span>
+      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年6月15日</span>
 </small>
 </div>
 </article>
