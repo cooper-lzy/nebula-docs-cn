@@ -761,13 +761,13 @@
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_9" id="__nav_4_9" type="checkbox"/>
 <label class="md-nav__link" for="__nav_4_9">
-        标签语句
+        Tag语句
         <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-label="标签语句" class="md-nav" data-md-level="2">
+<nav aria-label="Tag语句" class="md-nav" data-md-level="2">
 <label class="md-nav__title" for="__nav_4_9">
 <span class="md-nav__icon md-icon"></span>
-          标签语句
+          Tag语句
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
@@ -801,13 +801,13 @@
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_10" id="__nav_4_10" type="checkbox"/>
 <label class="md-nav__link" for="__nav_4_10">
-        边类型语句
+        Edge type语句
         <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-label="边类型语句" class="md-nav" data-md-level="2">
+<nav aria-label="Edge type语句" class="md-nav" data-md-level="2">
 <label class="md-nav__title" for="__nav_4_10">
 <span class="md-nav__icon md-icon"></span>
-          边类型语句
+          Edge type语句
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
@@ -1314,6 +1314,11 @@
       </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="../../../8.service-tuning/4.plan/">
+        执行计划
+      </a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="../../../8.service-tuning/super-node/">
         超级节点(稠密点)
       </a>
@@ -1474,12 +1479,12 @@
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../../nebula-studio/manage-schema/st-ug-crud-tag/">
-        操作标签
+        操作Tag
       </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../../nebula-studio/manage-schema/st-ug-crud-edge-type/">
-        操作边类型
+        操作Edge type
       </a>
 </li>
 <li class="md-nav__item">
@@ -1846,7 +1851,7 @@
 <h1 id="nebula_exchange">什么是Nebula Exchange<a class="headerlink" href="#nebula_exchange" title="Permanent link">¶</a></h1>
 <p><a href="https://github.com/vesoft-inc/nebula-spark-utils/tree/v2.0.0/nebula-exchange">Nebula Exchange</a>（简称Exchange）是一款Apache Spark™应用，用于在分布式环境中将集群中的数据批量迁移到Nebula Graph中，能支持多种不同格式的批式数据和流式数据的迁移。</p>
 <p>Exchange由Reader、Processor和Writer三部分组成。Reader读取不同来源的数据返回DataFrame后，Processor遍历DataFrame的每一行，根据配置文件中<code>fields</code>的映射关系，按列名获取对应的值。在遍历指定批处理的行数后，Writer会将获取的数据一次性写入到Nebula Graph中。下图描述了Exchange完成数据转换和迁移的过程。</p>
-<p><img alt="Nebula Graph® Exchange 由 Reader、Processor、Writer 组成，可以完成多种不同格式和来源的数据向 Nebula Graph 的迁移" src="../../figs/ex-ug-001.png" title="Nebula Graph® Exchange 转数据转换和迁移的过程"/></p>
+<p><img alt="Nebula Graph® Exchange 由 Reader、Processor、Writer 组成，可以完成多种不同格式和来源的数据向 Nebula Graph 的迁移" src="../../figs/ex-ug-003.png" title="Nebula Graph® Exchange 转数据转换和迁移的过程"/></p>
 <h2 id="_1">适用场景<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <p>Exchange适用于以下场景：</p>
 <ul>
@@ -1879,7 +1884,7 @@
 <li>异步操作：会在源数据中生成一条插入语句，发送给Graph服务，最后再执行插入操作。</li>
 </ul>
 <ul>
-<li>灵活性强：支持同时导入多个标签和边类型，不同标签和边类型可以是不同的数据来源或格式。</li>
+<li>灵活性强：支持同时导入多个Tag和Edge type，不同Tag和Edge type可以是不同的数据来源或格式。</li>
 </ul>
 <ul>
 <li>统计功能：使用Apache Spark™中的累加器统计插入操作的成功和失败次数。</li>
@@ -1890,7 +1895,7 @@
 <h2 id="_3">数据格式和来源<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
 <p>Exchange 2.0支持将以下格式或来源的数据转换为Nebula Graph能识别的点和边数据：</p>
 <ul>
-<li>存储在HDFS的数据，包括：<ul>
+<li>存储在HDFS或本地的数据，包括：<ul>
 <li><a href="../../use-exchange/ex-ug-import-from-parquet/">Apache Parquet</a></li>
 <li><a href="../../use-exchange/ex-ug-import-from-orc/">Apache ORC</a></li>
 <li><a href="../../use-exchange/ex-ug-import-from-json/">JSON</a></li>
@@ -1920,7 +1925,7 @@
 <div class="md-source-date">
 <small>
     
-      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年5月14日</span>
+      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年6月23日</span>
 </small>
 </div>
 </article>

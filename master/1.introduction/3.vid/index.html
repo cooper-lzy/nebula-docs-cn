@@ -789,13 +789,13 @@
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_9" id="__nav_4_9" type="checkbox"/>
 <label class="md-nav__link" for="__nav_4_9">
-        标签语句
+        Tag语句
         <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-label="标签语句" class="md-nav" data-md-level="2">
+<nav aria-label="Tag语句" class="md-nav" data-md-level="2">
 <label class="md-nav__title" for="__nav_4_9">
 <span class="md-nav__icon md-icon"></span>
-          标签语句
+          Tag语句
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
@@ -829,13 +829,13 @@
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_10" id="__nav_4_10" type="checkbox"/>
 <label class="md-nav__link" for="__nav_4_10">
-        边类型语句
+        Edge type语句
         <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-label="边类型语句" class="md-nav" data-md-level="2">
+<nav aria-label="Edge type语句" class="md-nav" data-md-level="2">
 <label class="md-nav__title" for="__nav_4_10">
 <span class="md-nav__icon md-icon"></span>
-          边类型语句
+          Edge type语句
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
@@ -1342,6 +1342,11 @@
       </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="../../8.service-tuning/4.plan/">
+        执行计划
+      </a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="../../8.service-tuning/super-node/">
         超级节点(稠密点)
       </a>
@@ -1502,12 +1507,12 @@
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../nebula-studio/manage-schema/st-ug-crud-tag/">
-        操作标签
+        操作Tag
       </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../nebula-studio/manage-schema/st-ug-crud-edge-type/">
-        操作边类型
+        操作Edge type
       </a>
 </li>
 <li class="md-nav__item">
@@ -1847,7 +1852,7 @@
 <p>在Nebula Graph中，一个点由点的ID唯一标识，即VID或Vertex ID。</p>
 <h2 id="vid_1">VID有如下特点<a class="headerlink" href="#vid_1" title="Permanent link">¶</a></h2>
 <ul>
-<li>VID数据类型只可以为定长字符串<code>FIXED_STRING(&lt;N&gt;)</code>或64位整数；一个图空间只能选用其中一种VID类型。</li>
+<li>VID数据类型只可以为定长字符串<code>FIXED_STRING(&lt;N&gt;)</code>或<code>INT64</code>；一个图空间只能选用其中一种VID类型。</li>
 </ul>
 <ul>
 <li>VID在一个图空间中必须唯一，其作用类似于关系型数据库中的主键（索引+唯一约束）。但不同图空间中的VID是完全独立无关的。</li>
@@ -1859,10 +1864,10 @@
 <li>
 <p>VID相同的点，会被认为是同一个点。例如：</p>
 <ul>
-<li>VID相当于一个实体的唯一标号，例如一个人的身份证号。标签（Tag）相当于实体所拥有的类型，例如"滴滴司机"和"老板"。不同的Tag又相应定义了两组不同的属性，例如"驾照号、驾龄、接单量、接单小号"和"工号、薪水、债务额度、商务电话"。</li>
+<li>VID相当于一个实体的唯一标号，例如一个人的身份证号。Tag相当于实体所拥有的类型，例如"滴滴司机"和"老板"。不同的Tag又相应定义了两组不同的属性，例如"驾照号、驾龄、接单量、接单小号"和"工号、薪水、债务额度、商务电话"。</li>
 </ul>
 <ul>
-<li>同时操作相同VID并且相同Tag的两条<code>INSERT</code>语句，晚写入的<code>INSERT</code>会覆盖先写入的。</li>
+<li>同时操作相同VID并且相同Tag的两条<code>INSERT</code>语句（均无<code>IF NOT EXISTS</code>参数），晚写入的<code>INSERT</code>会覆盖先写入的。</li>
 </ul>
 <ul>
 <li>同时操作包含相同VID但是两个不同<code>TAG A</code>和<code>TAG B</code>的两条<code>INSERT</code>语句，对<code>TAG A</code>的操作不会影响<code>TAG B</code>。</li>
@@ -1874,7 +1879,7 @@
 </ul>
 <h2 id="vid_2">VID使用建议<a class="headerlink" href="#vid_2" title="Permanent link">¶</a></h2>
 <ul>
-<li>Nebula Graph 1.x只支持VID为int64。2.x默认使用<code>FIXED_STRING(&lt;N&gt;)</code>为VID类型；但在<code>CREATE SPACE</code>中通过参数<code>vid_type = int64</code>，也可设置为64位整数。</li>
+<li>Nebula Graph 1.x只支持VID类型为<code>INT64</code>，2.x支持<code>INT64</code>和<code>FIXED_STRING(&lt;N&gt;)</code>。在<code>CREATE SPACE</code>中通过参数<code>vid_type</code>可以指定VID类型。</li>
 </ul>
 <ul>
 <li>可以使用<code>id()</code>函数，指定或引用该点的VID；</li>
@@ -1906,7 +1911,7 @@
 <div class="md-source-date">
 <small>
     
-      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年6月1日</span>
+      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年6月23日</span>
 </small>
 </div>
 </article>
