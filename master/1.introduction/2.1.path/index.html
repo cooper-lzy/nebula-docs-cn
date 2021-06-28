@@ -9,7 +9,7 @@
 <meta content="Nebula Graph" name="author"/>
 <link href="https://docs.nebula-graph.com.cn/master/master/1.introduction/2.1.path/" rel="canonical"/>
 <link href="../../assets/images/favicon.ico" rel="icon"/>
-<meta content="mkdocs-1.1.2, mkdocs-material-7.1.8" name="generator"/>
+<meta content="mkdocs-1.1.2, mkdocs-material-7.1.9" name="generator"/>
 <title>路径 - Nebula Graph Database 手册</title>
 <link href="../../assets/stylesheets/main.ca7ac06f.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.f1a3b89f.min.css" rel="stylesheet"/>
@@ -338,6 +338,11 @@
         关键字
       </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../3.ngql-guide/1.nGQL-overview/ngql-style-guide/">
+        nGQL风格指南
+      </a>
+</li>
 </ul>
 </nav>
 </li>
@@ -519,11 +524,6 @@
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../3.ngql-guide/6.functions-and-expressions/5.case-expressions/">
-        CASE表达式
-      </a>
-</li>
-<li class="md-nav__item">
 <a class="md-nav__link" href="../../3.ngql-guide/6.functions-and-expressions/6.list/">
         列表函数
       </a>
@@ -556,6 +556,11 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../3.ngql-guide/6.functions-and-expressions/9.user-defined-functions/">
         自定义函数
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../3.ngql-guide/6.functions-and-expressions/5.case-expressions/">
+        CASE表达式
       </a>
 </li>
 </ul>
@@ -1797,6 +1802,11 @@
       </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="../../20.appendix/write-tools/">
+        导入工具选择
+      </a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="../../15.contribution/how-to-contribute/">
         社区参与
       </a>
@@ -1852,7 +1862,7 @@
 <p>图论中一个非常重要的概念是路径，路径是指一个有限或无限的边序列，这些边连接着一系列点。</p>
 <p>路径的类型分为三种：<code>walk</code>、<code>trail</code>、<code>path</code>。关于路径的详细说明，请参见<a href="https://en.wikipedia.org/wiki/Path_(graph_theory)#Walk,_trail,_path">维基百科</a>。</p>
 <p>本文以下图为例进行简单介绍。</p>
-<p><img alt="路径示例" src="../../20.appendix/path1.png"/></p>
+<p><img alt="路径示例" src="../../images/path1.png"/></p>
 <h2 id="walk">walk<a class="headerlink" href="#walk" title="Permanent link">¶</a></h2>
 <p><code>walk</code>类型的路径由有限或无限的边序列构成。遍历时点和边可以重复。</p>
 <p>查看示例图，由于C、D、E构成了一个环，因此该图包含无限个路径，例如<code>A-&gt;B-&gt;C-&gt;D-&gt;E</code>、<code>A-&gt;B-&gt;C-&gt;D-&gt;E-&gt;C</code>、<code>A-&gt;B-&gt;C-&gt;D-&gt;E-&gt;C-&gt;D</code>。</p>
@@ -1868,7 +1878,7 @@
 <p><code>MATCH</code>、<code>FIND PATH</code>和<code>GET SUBGRAPH</code>语句采用的是<code>trail</code>类型路径。</p>
 </div>
 <p>在trail类型中，还有 <code>cycle</code> 和 <code>circuit</code> 两种特殊的路径类型，以下图为例对这两种特殊的路径类型进行介绍。</p>
-<p><img alt="trail示例" src="../../20.appendix/Circuits1.png"/></p>
+<p><img alt="trail示例" src="../../images/Circuits1.png"/></p>
 <ul>
 <li>
 <p>cycle</p>
@@ -1888,7 +1898,7 @@
 <div class="md-source-date">
 <small>
     
-      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年6月24日</span>
+      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年6月25日</span>
 </small>
 </div>
 </article>
@@ -1951,8 +1961,8 @@
 <div class="md-dialog" data-md-component="dialog">
 <div class="md-dialog__inner md-typeset"></div>
 </div>
-<script id="__config" type="application/json">{"base": "../..", "features": ["navigation.top", "header.autohide"], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.b0710199.min.js", "version": {"method": "mike"}}</script>
-<script src="../../assets/javascripts/bundle.76f349be.min.js"></script>
+<script id="__config" type="application/json">{"base": "../..", "features": ["navigation.top", "header.autohide"], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.477d984a.min.js", "version": {"method": "mike"}}</script>
+<script src="../../assets/javascripts/bundle.82b56eb2.min.js"></script>
 <script src="../../js/version-select.js"></script>
 <script src="../../js/config.js"></script>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>

@@ -9,7 +9,7 @@
 <meta content="Nebula Graph" name="author"/>
 <link href="https://docs.nebula-graph.com.cn/master/master/8.service-tuning/2.graph-modeling/" rel="canonical"/>
 <link href="../../assets/images/favicon.ico" rel="icon"/>
-<meta content="mkdocs-1.1.2, mkdocs-material-7.1.8" name="generator"/>
+<meta content="mkdocs-1.1.2, mkdocs-material-7.1.9" name="generator"/>
 <title>图建模 - Nebula Graph Database 手册</title>
 <link href="../../assets/stylesheets/main.ca7ac06f.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.f1a3b89f.min.css" rel="stylesheet"/>
@@ -310,6 +310,11 @@
         关键字
       </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../3.ngql-guide/1.nGQL-overview/ngql-style-guide/">
+        nGQL风格指南
+      </a>
+</li>
 </ul>
 </nav>
 </li>
@@ -491,11 +496,6 @@
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../3.ngql-guide/6.functions-and-expressions/5.case-expressions/">
-        CASE表达式
-      </a>
-</li>
-<li class="md-nav__item">
 <a class="md-nav__link" href="../../3.ngql-guide/6.functions-and-expressions/6.list/">
         列表函数
       </a>
@@ -528,6 +528,11 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../3.ngql-guide/6.functions-and-expressions/9.user-defined-functions/">
         自定义函数
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../3.ngql-guide/6.functions-and-expressions/5.case-expressions/">
+        CASE表达式
       </a>
 </li>
 </ul>
@@ -1846,6 +1851,11 @@
       </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="../../20.appendix/write-tools/">
+        导入工具选择
+      </a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="../../15.contribution/how-to-contribute/">
         社区参与
       </a>
@@ -1962,8 +1972,9 @@
 <p>建立Tag（或者Edge Type）时，需要指定对应的属性。通常称为 schema。</p>
 <h3 id="_4">区分“经常改变的部分”和“不经常改变的部分”<a class="headerlink" href="#_4" title="Permanent link">¶</a></h3>
 <p>改变指的是业务模型和数据模型上的改变（元信息），不是数据自身的改变。</p>
-<p>Nebula Graph 2.1.0 是强 schema 的系统，这意味着业务数据模型中的部分是“不应该经常改变的”，例如属性 schema 应该避免改变。类似于 MySQL 中 alter table 是应该尽量避免的操作。</p>
-<p>而点及邻边可以非常低成本的增删，因此可以将业务模型中“经常改变的部分”建模成点或边（关系），而不是属性schema。</p>
+<p>一些图数据库产品是schema-free的设计，所以在数据模型上，不论是图拓扑结构还是属性，都可以非常自由。属性可以建模转变为图拓扑，反之亦然。这类系统通常对于图拓扑的访问有特别的优化。</p>
+<p>而 Nebula Graph 2.1.0 是强 schema 的（行存型）系统，这意味着业务数据模型中的部分是“不应该经常改变的”，例如属性 schema 应该避免改变。类似于 MySQL 中 alter table 是应该尽量避免的操作。</p>
+<p>而点及邻边可以非常低成本的增删，因此可以将业务模型中“经常改变的部分”建模成点或边（关系），而不是属性 schema。</p>
 <p>例如，在一个业务模型中，人的属性是相对固定的，例如“年龄”，“性别”，“姓名”。而“通信好友”，“出入场所”，“交易账号”，“登录设备”等是相对容易改变的。前者适合建模为属性，后者适合建模为点或边。</p>
 <h3 id="_5">广度优先大于深度优先<a class="headerlink" href="#_5" title="Permanent link">¶</a></h3>
 <ul>
@@ -1992,7 +2003,7 @@
 <div class="md-source-date">
 <small>
     
-      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年6月23日</span>
+      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年6月25日</span>
 </small>
 </div>
 </article>
@@ -2055,8 +2066,8 @@
 <div class="md-dialog" data-md-component="dialog">
 <div class="md-dialog__inner md-typeset"></div>
 </div>
-<script id="__config" type="application/json">{"base": "../..", "features": ["navigation.top", "header.autohide"], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.b0710199.min.js", "version": {"method": "mike"}}</script>
-<script src="../../assets/javascripts/bundle.76f349be.min.js"></script>
+<script id="__config" type="application/json">{"base": "../..", "features": ["navigation.top", "header.autohide"], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.477d984a.min.js", "version": {"method": "mike"}}</script>
+<script src="../../assets/javascripts/bundle.82b56eb2.min.js"></script>
 <script src="../../js/version-select.js"></script>
 <script src="../../js/config.js"></script>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>

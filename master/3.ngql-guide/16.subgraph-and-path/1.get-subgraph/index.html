@@ -9,7 +9,7 @@
 <meta content="Nebula Graph" name="author"/>
 <link href="https://docs.nebula-graph.com.cn/master/master/3.ngql-guide/16.subgraph-and-path/1.get-subgraph/" rel="canonical"/>
 <link href="../../../assets/images/favicon.ico" rel="icon"/>
-<meta content="mkdocs-1.1.2, mkdocs-material-7.1.8" name="generator"/>
+<meta content="mkdocs-1.1.2, mkdocs-material-7.1.9" name="generator"/>
 <title>GET SUBGRAPH - Nebula Graph Database 手册</title>
 <link href="../../../assets/stylesheets/main.ca7ac06f.min.css" rel="stylesheet"/>
 <link href="../../../assets/stylesheets/palette.f1a3b89f.min.css" rel="stylesheet"/>
@@ -310,6 +310,11 @@
         关键字
       </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../1.nGQL-overview/ngql-style-guide/">
+        nGQL风格指南
+      </a>
+</li>
 </ul>
 </nav>
 </li>
@@ -491,11 +496,6 @@
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../6.functions-and-expressions/5.case-expressions/">
-        CASE表达式
-      </a>
-</li>
-<li class="md-nav__item">
 <a class="md-nav__link" href="../../6.functions-and-expressions/6.list/">
         列表函数
       </a>
@@ -528,6 +528,11 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../6.functions-and-expressions/9.user-defined-functions/">
         自定义函数
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../6.functions-and-expressions/5.case-expressions/">
+        CASE表达式
       </a>
 </li>
 </ul>
@@ -1034,11 +1039,21 @@
 <a class="md-nav__link" href="#_2">
     示例
   </a>
-<nav aria-label="示例" class="md-nav">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#faq">
+    FAQ
+  </a>
+<nav aria-label="FAQ" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#step_count">
     为什么返回结果中会出现超出step_count跳数之外的关系？
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#step_count_1">
+    为什么返回结果中会出现低于step_count跳数的关系？
   </a>
 </li>
 </ul>
@@ -1801,6 +1816,11 @@
       </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="../../../20.appendix/write-tools/">
+        导入工具选择
+      </a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="../../../15.contribution/how-to-contribute/">
         社区参与
       </a>
@@ -1836,11 +1856,21 @@
 <a class="md-nav__link" href="#_2">
     示例
   </a>
-<nav aria-label="示例" class="md-nav">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#faq">
+    FAQ
+  </a>
+<nav aria-label="FAQ" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#step_count">
     为什么返回结果中会出现超出step_count跳数之外的关系？
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#step_count_1">
+    为什么返回结果中会出现低于step_count跳数的关系？
   </a>
 </li>
 </ul>
@@ -1924,6 +1954,7 @@
 <p><img alt='GET SUBGRAPH FROM "100" OUT serve' src="https://docs-cdn.nebula-graph.com.cn/docs-2.0/3.ngql-guide/15.subgraph-and-path/subgraph-2.png"/></p>
 </li>
 </ul>
+<h2 id="faq">FAQ<a class="headerlink" href="#faq" title="Permanent link">¶</a></h2>
 <h3 id="step_count">为什么返回结果中会出现超出<code>step_count</code>跳数之外的关系？<a class="headerlink" href="#step_count" title="Permanent link">¶</a></h3>
 <p>为了展示子图的完整性，会在满足条件的所有点上额外查询一跳。例如下图。</p>
 <p><img alt="FAQ" src="../subgraph2.png"/></p>
@@ -1938,11 +1969,22 @@
 
 nebula&gt; go 1 steps from "A" over follow;
 </code></pre></div>
+<h3 id="step_count_1">为什么返回结果中会出现低于<code>step_count</code>跳数的关系？<a class="headerlink" href="#step_count_1" title="Permanent link">¶</a></h3>
+<p>查询到没有多余子图数据时会停止查询，且不会返回空值。</p>
+<div class="highlight"><pre><span></span><code>nebula&gt; GET SUBGRAPH 100 STEPS FROM "player141" OUT follow;
++-------------------------------------------------------+------------------------------------------------------+
+| _vertices                                             | _edges                                               |
++-------------------------------------------------------+------------------------------------------------------+
+| [("player141" :player{age: 43, name: "Ray Allen"})]   | [[:follow "player141"-&gt;"player124" @0 {degree: 9}]]  |
++-------------------------------------------------------+------------------------------------------------------+
+| [("player124" :player{age: 33, name: "Rajon Rondo"})] | [[:follow "player124"-&gt;"player141" @0 {degree: -1}]] |
++-------------------------------------------------------+------------------------------------------------------+
+</code></pre></div>
 <hr/>
 <div class="md-source-date">
 <small>
     
-      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年6月23日</span>
+      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年6月25日</span>
 </small>
 </div>
 </article>
@@ -2005,8 +2047,8 @@ nebula&gt; go 1 steps from "A" over follow;
 <div class="md-dialog" data-md-component="dialog">
 <div class="md-dialog__inner md-typeset"></div>
 </div>
-<script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.top", "header.autohide"], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.b0710199.min.js", "version": {"method": "mike"}}</script>
-<script src="../../../assets/javascripts/bundle.76f349be.min.js"></script>
+<script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.top", "header.autohide"], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.477d984a.min.js", "version": {"method": "mike"}}</script>
+<script src="../../../assets/javascripts/bundle.82b56eb2.min.js"></script>
 <script src="../../../js/version-select.js"></script>
 <script src="../../../js/config.js"></script>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
