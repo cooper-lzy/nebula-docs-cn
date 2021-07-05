@@ -2042,19 +2042,29 @@ student100,student102,1,96.2
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
+<ul>
+<li>CSV文件中列的序号从0开始，即第一列的序号为0，第二列的序号为1。</li>
+</ul>
+<ul>
+<li>点ID的数据类型需要和<code>clientSettings.postStart.commands</code>中的创建图空间语句的数据类型一致。</li>
+</ul>
+<ul>
+<li>
+<p>如果没有设置index字段指定列的序号，CSV文件必须遵守如下规则：</p>
+<ul>
+<li>在点数据文件中，第一列必须为点ID，后面的列为属性，且需要和配置文件内的顺序一一对应。</li>
+</ul>
+<ul>
+<li>在边数据文件中，第一列必须为起始点ID，第二列必须为目的点ID，如果<code>withRanking</code>为<code>true</code>，第三列必须为rank值，后面的列为属性，且需要和配置文件内的顺序一一对应。</li>
+</ul>
+</li>
+</ul>
 </div>
-<p>- CSV文件中列的序号从0开始，即第一列的序号为0，第二列的序号为1。</p>
-<p>- 点ID的数据类型需要和<code>clientSettings.postStart.commands</code>中的创建图空间语句的数据类型一致。</p>
-<p>- 如果没有设置index字段指定列的序号，CSV文件必须遵守如下规则：</p>
-<div class="codehilite"><pre><span></span><code>+ 在点数据文件中，第一列必须为点ID，后面的列为属性，且需要和配置文件内的顺序一一对应。
-
-+ 在边数据文件中，第一列必须为起始点ID，第二列必须为目的点ID，如果`withRanking`为`true`，第三列必须为rank值，后面的列为属性，且需要和配置文件内的顺序一一对应。
-</code></pre></div>
 <hr/>
 <div class="md-source-date">
 <small>
     
-      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年6月23日</span>
+      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年6月29日</span>
 </small>
 </div>
 </article>

@@ -1819,6 +1819,11 @@
 </ul>
 </nav>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_9">
+    视频
+  </a>
+</li>
 </ul>
 </nav>
 </li>
@@ -1934,6 +1939,11 @@
 </ul>
 </nav>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_9">
+    视频
+  </a>
+</li>
 </ul>
 </nav>
 </div>
@@ -1965,6 +1975,7 @@
 </ul>
 <h2 id="_2">使用限制<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <p>点ID的数据必须为整数，即点ID可以是INT类型，或者是String类型但数据本身为整数。</p>
+<p>对于非整数的String类型数据，推荐使用调用算法接口的方式，可以使用SparkSQL的<code>dense_rank</code>函数进行编码，将String类型转换为Long类型。</p>
 <h2 id="_3">支持算法<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
 <p>Nebula Algorithm支持的图计算算法如下。</p>
 <table>
@@ -2081,7 +2092,7 @@
 <p>传入参数调用算法（以PageRank为例）。更多算法请参见<a href="https://github.com/vesoft-inc/nebula-spark-utils/tree/master/nebula-algorithm/src/test/scala/com/vesoft/nebula/algorithm/lib">测试用例</a>。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>执行算法的DataFrame默认第一列是起始点，第二列是目的点，第三列是边权重（非Nebula Graph中的rank）。</p>
+<p>执行算法的DataFrame默认第一列是起始点，第二列是目的点，第三列是边权重（非Nebula Graph中的Rank）。</p>
 </div>
 <div class="highlight"><pre><span></span><code>val <span class="nv">prConfig</span> <span class="o">=</span> new PRConfig<span class="o">(</span><span class="m">5</span>, <span class="m">1</span>.0<span class="o">)</span>
 val <span class="nv">louvainResult</span> <span class="o">=</span> PageRankAlgo.apply<span class="o">(</span>spark, data, prConfig, <span class="nb">false</span><span class="o">)</span>
@@ -2250,11 +2261,16 @@ val <span class="nv">louvainResult</span> <span class="o">=</span> PageRankAlgo.
 </code></pre></div>
 </li>
 </ol>
+<h2 id="_9">视频<a class="headerlink" href="#_9" title="Permanent link">¶</a></h2>
+<ul>
+<li><a href="https://www.bilibili.com/video/BV1fB4y1T7XK">图计算工具——Nebula Algorithm 介绍</a>（2分36秒）</li>
+</ul>
+<iframe allowfullscreen="true" border="0" frameborder="no" framespacing="0" height="480px" scrolling="no" src="//player.bilibili.com/player.html?aid=588577467&amp;bvid=BV1fB4y1T7XK&amp;cid=351282857&amp;page=1&amp;high_quality=1" width="720px"> </iframe>
 <hr/>
 <div class="md-source-date">
 <small>
     
-      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年6月23日</span>
+      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年7月2日</span>
 </small>
 </div>
 </article>
