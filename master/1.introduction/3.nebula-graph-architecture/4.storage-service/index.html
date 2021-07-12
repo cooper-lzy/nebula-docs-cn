@@ -9,9 +9,9 @@
 <meta content="Nebula Graph" name="author"/>
 <link href="https://docs.nebula-graph.com.cn/master/master/1.introduction/3.nebula-graph-architecture/4.storage-service/" rel="canonical"/>
 <link href="../../../assets/images/favicon.ico" rel="icon"/>
-<meta content="mkdocs-1.1.2, mkdocs-material-7.1.9" name="generator"/>
+<meta content="mkdocs-1.1.2, mkdocs-material-7.1.10" name="generator"/>
 <title>Storage服务 - Nebula Graph Database 手册</title>
-<link href="../../../assets/stylesheets/main.ca7ac06f.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/main.1fe995fd.min.css" rel="stylesheet"/>
 <link href="../../../assets/stylesheets/palette.f1a3b89f.min.css" rel="stylesheet"/>
 <meta content="#009485" name="theme-color"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -2219,15 +2219,15 @@
 <p>点和边分布在不同的分片，分片分布在不同的机器。分片数量在 CREATE SPACE 语句中指定，此后不可更改。</p>
 <p>如果需要将某些点放置在相同的分片（例如在一台机器上），可以参考<a href="https://github.com/vesoft-inc/nebula-common/blob/master/src/common/clients/meta/MetaClient.cpp">公式或代码</a>。</p>
 <p>下文用简单代码说明VID和分片的关系。</p>
-<div class="highlight"><pre><span></span><code>    // 如果ID长度为8，为了兼容1.0，将数据类型视为int64。
-    uint64_t vid = 0;
-    if (id.size() == 8) {
-        memcpy(static_cast&lt;void*&gt;(&amp;vid), id.data(), 8);
-    } else {
-        MurmurHash2 hash;
-        vid = hash(id.data());
-    }
-    PartitionID pId = vid % numParts + 1;
+<div class="highlight"><pre><span></span><code>// 如果ID长度为8，为了兼容1.0，将数据类型视为int64。
+uint64_t vid = 0;
+if (id.size() == 8) {
+    memcpy(static_cast&lt;void*&gt;(&amp;vid), id.data(), 8);
+} else {
+    MurmurHash2 hash;
+    vid = hash(id.data());
+}
+PartitionID pId = vid % numParts + 1;
 </code></pre></div>
 <p>简单来说，上述代码是将一个固定的字符串进行哈希计算，转换成数据类型为int64的数字（int64数字的哈希计算结果是数字本身），将数字取模，然后加1，即：</p>
 <div class="highlight"><pre><span></span><code><span class="n">pId</span> <span class="o">=</span> <span class="n">vid</span> <span class="o">%</span> <span class="n">numParts</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
@@ -2324,15 +2324,16 @@
 <div class="md-source-date">
 <small>
     
-      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年7月2日</span>
+      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年7月8日</span>
 </small>
 </div>
 </article>
 </div>
 </div>
-<a class="md-top md-icon" data-md-component="top" data-md-state="hidden" href="#" title="Back to top">
+<a class="md-top md-icon" data-md-component="top" data-md-state="hidden" href="#">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path></svg>
-</a>
+            Back to top
+          </a>
 </main>
 <footer class="md-footer">
 <nav aria-label="Footer" class="md-footer__inner md-grid">
@@ -2388,7 +2389,7 @@
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.top", "header.autohide"], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.477d984a.min.js", "version": {"method": "mike"}}</script>
-<script src="../../../assets/javascripts/bundle.82b56eb2.min.js"></script>
+<script src="../../../assets/javascripts/bundle.ddd52ceb.min.js"></script>
 <script src="../../../js/version-select.js"></script>
 <script src="../../../js/config.js"></script>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
