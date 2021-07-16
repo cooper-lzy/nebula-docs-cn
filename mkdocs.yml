@@ -333,6 +333,12 @@ nav:
 
 #  - Nebula Algorithm: nebula-algorithm.md
 
+  - Nebula Graph Dashboard: 
+      - 什么是Nebula Graph Dashboard: nebula-dashboard/1.what-is-dashboard.md
+      - 部署Dashboard: nebula-dashboard/2.deploy-dashboard.md
+      - Dashboard页面介绍: nebula-dashboard/3.use-dashboard.md
+      - 监控指标说明: nebula-dashboard/6.monitor-parameter.md
+
   - 附录:
       - Nebula Graph 常见问题: 20.appendix/0.FAQ.md
       - 生态工具概览: 20.appendix/6.eco-tool-version.md
