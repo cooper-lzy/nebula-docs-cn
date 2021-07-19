@@ -61,6 +61,8 @@ extra:
     release: master
   common:
     release: master
+  dashboard:
+    release: nebula-graph-dashboard-beta
   
 nav:
   - 前言: README.md
